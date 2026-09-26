@@ -1,7 +1,7 @@
 ---
 title: "**PRÁTICA ESTATÍSTICA II**"
-subtitle: "**ATIVIDADE AVALIATIVA 0**"
-author: "Nome1 (<seuemail1@id.uff.br>) <br> Nome2 (<seuemail2@id.uff.br>)"
+subtitle: "**ATIVIDADE AVALIATIVA 5**"
+author: "Alexandre Villela Roque (<alexandreroque@id.uff.br>) <br> Davi Lucas (daviij@id.uff.br) <br> Marcos Paulo (<mp_dias@id.uff.br>)"
 date: today
 date-format: "DD/MM/YYYY"
 institute: "Universidade Federal Fluminense"
@@ -10,188 +10,339 @@ format:
     css: custom.css
     slide-number: true
     incremental: false
-    transition: zoom
-    background-transition: convex
+    transition: slide
+    background-transition: fade
     width: 1280
     height: 720
     margin: 0.07
     auto-stretch: false
-    title-slide-attributes:
-      data-background-image: "Capa.png"
-      data-background-size: cover
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
-# **PRIMEIRO CAPÍTULO** {data-background-image="Capa.png" style="text-align:center"}
+# Contexto
 
-## **PRIMEIRA SEÇÃO**
+## Objetivo da ANOVA
 
-## **BLOCOS**
+- Testar se as médias de três ou mais grupos populacionais são iguais.
 
-::: box-blue
-Este é um bloco azul.
+::: box-grey
+Hipóteses:
+
+$$\begin{aligned}
+H_0 &: \mu_1 = \mu_2 = ⋯ = \mu_k \\
+H_1 &: \text{pelo menos uma das médias é diferente.} 
+\end{aligned}$$
 :::
 
-::: box-green
-Este é um bloco verde.
+- A ideia é comparar a variabilidade entre os grupos com a variabilidade dentro dos grupos.
+
+## Onde a ANOVA clássica é utilizada na prática
+
+:::: box-grey
+::: box-espaco
+- **Experimentos controlados**: comparar o efeito de diferentes tratamentos (ex.: doses de um medicamento, tipos de adubo, métodos de ensino).
+- **Comparação de processos/métodos**: verificar se máquinas, fornecedores ou protocolos diferentes produzem, em média, o mesmo resultado.
+- **Pesquisas com grupos balanceados**: quando os grupos têm tamanhos amostrais semelhantes e foram coletados sob condições parecidas, é razoável esperar variâncias próximas.
+- Em todos esses casos, a ANOVA funciona bem **enquanto a suposição de homogeneidade de variâncias for plausível**.
+:::
+::::
+
+## Suposições principais
+
+::: box-greypeq
+- **Independência**: as observações são independentes entre si.
+  $$X_1,X_2,...,X_n \text{ são independentes}$$
+- **Normalidade**: as amostras são de populações com distribuição aproximadamente normal.
+  $$X_{ij} \sim N(\mu_i,\sigma^2)$$
+- **Homogeneidade**: os grupos possuem variâncias populacionais iguais.
+  $$\sigma^2_1 = \sigma^2_2 = ... = \sigma^2_k$$
 :::
 
-::: box-purple
-**TÍTULO OPCIONAL**
+## Estatística de teste
 
-Este é um bloco roxo.
+::: box-grey
+$$\boxed{F=\frac{QM_{entre}}{QM_{dentro}}}$$
+
+onde:
+
+$$QM_{entre}=\frac{SQ_{entre}}{k-1} \quad ; \quad QM_{dentro}=\frac{SQ_{dentro}}{n-k}$$
+
+em que:
+
+- $k$ = número de grupos;
+- $n$ = número total de observações;
+- $SQ_{\text{entre}}$ = soma dos quadrados entre os grupos;
+- $SQ_{\text{dentro}}$ = soma dos quadrados dentro dos grupos.
+
+**Interpretação**: valores grandes de $F$ indicam maior variabilidade entre os grupos, fornecendo evidência contra $H_0$.
 :::
 
-::: box-orange
-Este é um bloco laranja.
+## Onde a suposição da homogeneidade é utilizada
+
+:::: box-grey
+::: box-espaco
+- **O** $QM_{dentro}$ combina as variâncias dos grupos.
+  - É uma média ponderada, que só faz sentido se todas refletem o mesmo $\sigma^2$.
+- **Sustenta a distribuição** $F$.
+  - O $QM_{dentro}$ é o denominador de $F$. Com um $\sigma^2$ comum, o $F$ segue sua distribuição teórica.
+- **O Tukey também usa o** $QM_{dentro}$.
+  - As comparações múltiplas herdam a mesma suposição.
+:::
+::::
+
+## O problema da heterogeneidade de variâncias
+
+:::: box-grey
+::: box-espaco
+- **O** $QM_{dentro}$ deixa de ser confiável.
+  - Ele mistura variâncias diferentes em um único valor.
+- $F$ perde a distribuição teórica.
+  - O $p\text{-valor}$ fica impreciso.
+- **Erro tipo I distorcido.**
+  - Falsos positivos ou perda de poder.
+- **Quando isso acontece na prática?**
+  - Grupos com **tamanhos amostrais muito diferentes**.
+  - Variáveis como renda, tempo ou contagens, em que a variância tende a crescer junto com a média.
+  - Grupos coletados em condições distintas (ex.: hospitais, turmas, regiões diferentes).
+:::
+::::
+
+## **Teste de Tukey**
+
+::::::: box-grey
+:::::: panel-tabset
+### Objetivo
+
+::: box-espaco
+- A $ANOVA$ indica que há diferença, mas não onde.
+
+- O $\text{Teste de Tukey}$ compara todos os pares de médias,
+  identificando quais dos grupos diferem.
+
+- Depende do $QM_{dentro}$.
+
+  - Pressupõe homogeneidade de variâncias.
 :::
 
-## **LISTA NÃO ORDENADA**
+### Amostras iguais
 
-::: box-blue
-- Estatística
-- Matemática
-- Programação
+:::: columns
+::: {.column width="55%"}
+- Para amostras iguais, a fórmula é a seguinte:
+
+$$HSD = q_{\alpha,k,N-k}\sqrt{\frac{QM_{dentro}}{n}}$$
+
+- **A comparação é feita da seguinte forma:**
+
+$$|\bar{X}_i - \bar{X}_j| > HSD$$
+
+- Se essa desigualdade for satisfeita, as médias dos grupos $i$ e $j$ diferem significativamente.
 :::
 
-## **LISTA NÃO ORDENADA ANINHADA**
+::: {.column width="45%"}
+- Onde:
+  - $HSD=$ Diferença Honestamente Significativa.
+  - $q_{\alpha,k,N-k}=$ valor crítico da distribuição do alcance studentizado;
+  - $QM_{dentro}=$ quadrado médio dentro dos grupos;
+  - $n=$ tamanho dos grupos.
+:::
+::::
 
-- Frutas
-  - Maçã
-  - Banana
-- Verduras
-  - Alface
-  - Cenoura
+### Amostras diferentes
 
-## LISTA ORDENADA
+:::: columns
+::: {.column width="55%"}
+- Para amostras diferentes, a fórmula é a seguinte:
 
-::: box-orange
-1.  Coletar dados
-2.  Organizar informações
-3.  Aplicar análise estatística
+$$HSD_{ij}=q_{\alpha,k,N-k}\sqrt{\frac{QM_{dentro}}{2}\left(\frac{1}{n_i}+\frac{1}{n_j}\right)}$$
+
+- **A comparação é feita da seguinte forma:**
+
+$$|\bar{X}_i - \bar{X}_j| > HSD_{ij}$$
+
+- Se essa desigualdade for satisfeita, as médias dos grupos $i$ e $j$ diferem significativamente.
 :::
 
-## **LISTAS ORDENADAS ANINHADAS**
+::: {.column width="45%"}
+- Onde:
+  - $HSD_{ij}=$ Diferença Honestamente Significativa dos grupos $i$ e $j$;
+  - $n_i=$ Tamanho do grupo $i$;
+  - $n_j=$ Tamanho do grupo $j$.
+:::
+::::
 
-1.  Preparação
-    1.  Coletar materiais
-    2.  Definir objetivos
-2.  Execução
+::::::
+:::::::
 
-## **LISTA DE TAREFAS**
+# A ANOVA de Welch
 
-::: box-purple
-- [x] Comprar leite
-- [ ] Estudar Quarto
-- [ ] Enviar relatório
+## ANOVA clássica x ANOVA de Welch
+
+:::: box-grey
+::: box-espaco
+- **ANOVA clássica**: assume variâncias iguais; usa um único $QM_{dentro}$ (pooled) para todos os grupos; $df=n-k$ (inteiro).
+- **ANOVA de Welch**: não assume variâncias iguais; cada grupo entra com a sua própria $s_i^2$, ponderada por $w_i=n_i/s_i^2$; $df_2$ é corrigido (Satterthwaite) e geralmente **fracionário**.
+- **Quando os grupos têm variâncias parecidas**, os dois testes dão resultados muito próximos — por isso a Welch pode ser usada **como padrão**, sem custo relevante.
+- **Uso prático**: comparar grupos naturalmente heterogêneos (ex.: renda por região, tempo de internação por hospital, notas entre turmas com perfis diferentes), especialmente quando os tamanhos amostrais também são diferentes.
+:::
+::::
+
+## O que muda em relação à ANOVA clássica?
+
+:::: box-grey
+::: box-espaco
+- **Não existe mais um único** $QM_{dentro}$ pooled (agrupado).
+  - Cada grupo entra com a sua própria variância amostral $s_i^2$, em vez de todas serem misturadas em uma média ponderada única.
+- **Cada grupo recebe um peso.**
+  - Grupos com variância menor (mais precisos) pesam mais na comparação das médias do que grupos com variância maior.
+- **Os graus de liberdade deixam de ser** $n-k$.
+  - Passam a ser corrigidos (aproximação de Satterthwaite), geralmente resultando em um valor **não inteiro** e menor que o da ANOVA clássica.
+- **A ideia estatística:** ajustar o teste para que ele "penalize" a incerteza extra trazida pela heterogeneidade, em vez de ignorá-la.
+:::
+::::
+
+## Pesos e média ponderada
+
+::: box-grey
+Cada grupo $i$ recebe um peso inversamente proporcional à sua própria variância:
+
+$$\boxed{w_i=\frac{n_i}{s_i^2}}$$
+
+A média ponderada de Welch (usada no lugar da média geral simples) é:
+
+$$\bar{X}_w=\frac{\sum_{i=1}^{k}w_i\bar{X}_i}{\sum_{i=1}^{k}w_i}$$
+
+em que:
+
+- $n_i$ = tamanho do grupo $i$;
+- $s_i^2$ = variância amostral do grupo $i$;
+- $\bar{X}_i$ = média do grupo $i$.
+
+**Interpretação**: grupos mais "confiáveis" (menor variância) recebem peso maior tanto no cálculo da média de referência quanto na estatística de teste.
 :::
 
-## **LINKS**
+## Estatística de teste de Welch
 
-Confira a documentação oficial do [Quarto](https://quarto.org).
+::: box-grey
+$$\boxed{F_{W}=\dfrac{\dfrac{\sum_{i=1}^{k}w_i(\bar{X}_i-\bar{X}_w)^2}{k-1}}{1+\dfrac{2(k-2)}{k^2-1}\displaystyle\sum_{i=1}^{k}\dfrac{\left(1-\frac{w_i}{\sum_j w_j}\right)^2}{n_i-1}}}$$
 
-## **EQUAÇÕES**
+em que:
 
-A reta é descrita por $y = mx + b$.
+- $k$ = número de grupos;
+- $w_i$ = peso do grupo $i$;
+- $\bar{X}_w$ = média ponderada de Welch.
 
-Segue uma equação de destaque:
-$$y = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
-
-Mais exemplos:
-
-- Frações: $\frac{a}{b}$
-- Raiz quadrada: $\sqrt{x}$
-- Expoentes: $x^2$
-- Índices: $x_i$
-- Somatórios: $\sum_{i=1}^{n} x_i$
-
-## **IMAGENS**
-
-![](Rstudio.png){style="width:50%;"}
-
-## **IMAGENS COM EDIÇÕES**
-
-![](Rstudio.png){fig-align="center" width="100%"}
-
-## **TABELAS**
-
-| Disciplina  | Professor       | Horário |
-|-------------|-----------------|---------|
-| Estatística | Prof. Guilherme | 08h-10h |
-| Matemática  | Prof. Ana       | 10h-12h |
-| Programação | Prof. João      | 14h-16h |
-
-| Produto | Preço | Quantidade |
-|:--------|------:|:----------:|
-| Lápis   |  1.50 |     10     |
-| Caderno | 12.00 |     5      |
-| Mochila | 75.00 |     1      |
-
-## **SLIDE COM ABAS**
-
-::: panel-tabset
-### Aba 1
-
-Conteúdo da primeira aba.
-
-### Aba 2
-
-Conteúdo da segunda aba.
-
-### Aba 3
-
-Conteúdo da terceira aba.
+**Interpretação**: o numerador é semelhante ao $QM_{entre}$ da ANOVA clássica (agora ponderado), mas o denominador deixa de ser $1$ e passa a conter um termo de correção que cresce quando os pesos $w_i$ são muito desiguais entre os grupos — ou seja, quando a heterogeneidade de variâncias é maior.
 :::
 
-## Exemplo de colunas
+## Graus de liberdade de Welch
 
-::::: columns
-::: {.column width="60%"}
-- Esta é a primeira coluna
-- Ela ocupa **60% da largura**
+:::: box-grey
+::: box-espaco
+- **Numerador**: continua o mesmo da ANOVA clássica.
+  $$df_1=k-1$$
+
+- **Denominador**: aproximado pela fórmula de Satterthwaite, usando os mesmos termos do denominador de $F_W$.
+  $$df_2=\dfrac{k^2-1}{3\displaystyle\sum_{i=1}^{k}\dfrac{\left(1-\frac{w_i}{\sum_j w_j}\right)^2}{n_i-1}}$$
+
+- $F_W$ é então comparado a uma distribuição $F$ com $(df_1, df_2)$ graus de liberdade.
+- **Ponto-chave**: $df_2$ costuma ser **fracionário** e menor do que $n-k$, refletindo a incerteza extra trazida pela heterogeneidade das variâncias.
+:::
+::::
+
+## Uso prático da ANOVA de Welch
+
+:::: box-grey
+::: box-espaco
+- Recomendada quando o teste de Levene/Bartlett indica **variâncias significativamente diferentes** entre os grupos.
+- Especialmente importante quando, além da heterogeneidade, os **tamanhos amostrais também são desbalanceados** — cenário em que a ANOVA clássica mais falha.
+- Perde muito pouco poder estatístico quando as variâncias são, na verdade, iguais — por isso muitos pacotes estatísticos já a recomendam **como escolha padrão**.
+- Exemplos: comparar tempos de resposta a um tratamento entre hospitais de portes diferentes; comparar salários entre setores com dispersões distintas.
+:::
+::::
+
+## **Teste de Games-Howell**
+
+::::::: box-grey
+:::::: panel-tabset
+### Objetivo
+
+::: box-espaco
+- Assim como o Tukey, o $\text{Games-Howell}$ é um teste de comparações múltiplas: compara todos os pares de médias após um resultado significativo na ANOVA.
+
+- A diferença é que ele **não depende do** $QM_{dentro}$ pooled.
+  - Cada par de grupos $(i,j)$ usa apenas as variâncias e tamanhos amostrais desse par.
+
+- Por isso é o pós-teste recomendado quando a ANOVA de Welch (em vez da clássica) foi utilizada.
 :::
 
-::: {.column width="40%"}
-- Esta é a segunda coluna
-- Ela ocupa **40% da largura**
+### Estatística e graus de liberdade
+
+:::: columns
+::: {.column width="58%"}
+- Para cada par de grupos $i$ e $j$, a estatística é análoga a um teste $t$ de Welch:
+
+$$t_{ij}=\dfrac{\bar{X}_i-\bar{X}_j}{\sqrt{\dfrac{s_i^2}{n_i}+\dfrac{s_j^2}{n_j}}}$$
+
+- Os graus de liberdade **também são calculados par a par**, pela aproximação de Welch-Satterthwaite:
+
+$$\nu_{ij}=\dfrac{\left(\dfrac{s_i^2}{n_i}+\dfrac{s_j^2}{n_j}\right)^2}{\dfrac{(s_i^2/n_i)^2}{n_i-1}+\dfrac{(s_j^2/n_j)^2}{n_j-1}}$$
 :::
-:::::
 
-## *SCROLLING* {.scrollable}
+::: {.column width="42%"}
+- Onde:
+  - $s_i^2, s_j^2=$ variâncias amostrais dos grupos $i$ e $j$;
+  - $n_i, n_j=$ tamanhos dos grupos $i$ e $j$.
 
-Este slide demonstra o uso da classe **scrollable**, que permite adicionar **rolagem vertical** quando o conteúdo é muito grande.
+- **Diferente do Tukey**, aqui não existe um único $QM_{dentro}$ nem um único $N-k$: cada comparação tem sua própria "régua" de variabilidade e seu próprio grau de liberdade.
+:::
+::::
 
-Este é um exemplo de texto genérico utilizado apenas para preencher o slide e demonstrar como o conteúdo pode ultrapassar a altura da tela.
+### Critério de decisão
 
-- Item 1
-- Item 2
-- Item 3
-- Item 4
-- Item 5
+:::: columns
+::: {.column width="54%"}
+- O valor crítico usa a mesma distribuição do alcance studentizado do Tukey, mas dividido por $\sqrt{2}$ e usando $\nu_{ij}$ no lugar de $N-k$:
 
-Quando há muito conteúdo, o slide normalmente ficaria visualmente sobrecarregado. Com o uso de `scrollable`, é possível manter tudo em um único slide e permitir que o usuário role o conteúdo.
+$$q^{*}_{ij}=\frac{q_{\alpha,k,\nu_{ij}}}{\sqrt{2}}$$
 
-- Item A
-- Item B
-- Item C
-- Item D
-- Item E
+- **A comparação é feita da seguinte forma:**
 
-## **CRIANDO UMA CHUNK**
+$$|\bar{X}_i-\bar{X}_j| > q^{*}_{ij}\sqrt{\frac{s_i^2}{n_i}+\frac{s_j^2}{n_j}}$$
 
-```{r}
-x <- 1:10
-hist(x)
-```
+- Se essa desigualdade for satisfeita, as médias dos grupos $i$ e $j$ diferem significativamente.
+:::
 
-## CHUNK COM NOME
+::: {.column width="46%"}
+- **Lógica estatística**: assim como a ANOVA de Welch troca a variância pooled por variâncias e graus de liberdade específicos de cada grupo, o Games-Howell faz o mesmo com o Tukey — troca o $QM_{dentro}$ e o $N-k$ únicos por uma estimativa própria de erro-padrão e de graus de liberdade **para cada par de grupos**, evitando que grupos com variância pequena "peguem carona" na variabilidade inflada de grupos com variância grande.
+:::
+::::
 
-```{r boxplot}
-x <- 1:10
-boxplot(x)
-```
+::::::
+:::::::
 
-## **CHUNK PERSONALIZADA**
+## Tukey x Games-Howell: quando usar cada um
 
-```{r, fig.width=10, fig.height=4}
-hist(rnorm(100), col="skyblue", main="Histograma")
-```
+:::: box-grey
+::: box-espaco
+- **Tukey**: variâncias homogêneas (ou aproximadamente) e, idealmente, grupos balanceados; usa um único $QM_{dentro}$ e um único $N-k$ para todas as comparações.
+- **Games-Howell**: variâncias heterogêneas e/ou grupos desbalanceados; cada par $(i,j)$ tem sua própria variância combinada e seu próprio grau de liberdade.
+- **Regra prática**: se a ANOVA de Welch foi usada no teste global, o pós-teste coerente é o Games-Howell — assim como o Tukey é o par natural da ANOVA clássica.
+- **Uso prático**: comparações múltiplas em estudos clínicos, educacionais ou industriais em que alguns grupos são naturalmente mais variáveis ou têm amostras de tamanhos muito diferentes.
+:::
+::::
+
+# Referências
+
+## Referências
+
+::: box-greypeq
+- WELCH, B. L. On the comparison of several mean values: an alternative approach. **Biometrika**, v. 38, n. 3/4, p. 330–336, 1951.
+- GAMES, P. A.; HOWELL, J. F. Pairwise multiple comparison procedures with unequal N's and/or variances: a Monte Carlo study. **Journal of Educational Statistics**, v. 1, n. 2, p. 113–125, 1976.
+- TUKEY, J. W. Comparing individual means in the analysis of variance. **Biometrics**, v. 5, n. 2, p. 99–114, 1949.
+- APRENDER ESTATÍSTICA FÁCIL. **O que é Welch ANOVA**. Disponível em: <https://estatisticafacil.org/glossario/o-que-e-welch-anova/>.
+:::
+
+## Obrigado! {.center}

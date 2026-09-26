@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/tabby.min.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
+
+  <meta name="author" content="Alexandre Villela Roque (alexandreroque@id.uff.br)   Davi Lucas (daviij@id.uff.br)   Marcos Paulo (mp_dias@id.uff.br)">
+  <title>PRÁTICA ESTATÍSTICA II</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
+  <link rel="stylesheet" href="custom.css">
+  <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title"><strong>PRÁTICA ESTATÍSTICA II</strong></h1>
+  <p class="subtitle"><strong>ATIVIDADE AVALIATIVA 5</strong></p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Alexandre Villela Roque (<a href="mailto:alexandreroque@id.uff.br" class="email">alexandreroque@id.uff.br</a>) <br> Davi Lucas (daviij@id.uff.br) <br> Marcos Paulo (<a href="mailto:mp_dias@id.uff.br" class="email">mp_dias@id.uff.br</a>) 
+</div>
+        <p class="quarto-title-affiliation">
+            Universidade Federal Fluminense
+          </p>
+    </div>
+</div>
+
+  <p class="date">26/09/2026</p>
+</section>
+<section>
+<section id="contexto" class="title-slide slide level1 center">
+<h1>Contexto</h1>
+
+</section>
+<section id="objetivo-da-anova" class="slide level2">
+<h2>Objetivo da ANOVA</h2>
+<ul>
+<li>Testar se as médias de três ou mais grupos populacionais são iguais.</li>
+</ul>
+<div class="box-grey">
+<p>Hipóteses:</p>
+<p><span class="math display">\[\begin{aligned}
+H_0 &amp;: \mu_1 = \mu_2 = ⋯ = \mu_k \\
+H_1 &amp;: \text{pelo menos uma das médias é diferente.}
+\end{aligned}\]</span></p>
+</div>
+<ul>
+<li>A ideia é comparar a variabilidade entre os grupos com a variabilidade dentro dos grupos.</li>
+</ul>
+</section>
+<section id="onde-a-anova-clássica-é-utilizada-na-prática" class="slide level2">
+<h2>Onde a ANOVA clássica é utilizada na prática</h2>
+<div class="box-grey">
+<div class="box-espaco">
+<ul>
+<li><strong>Experimentos controlados</strong>: comparar o efeito de diferentes tratamentos (ex.: doses de um medicamento, tipos de adubo, métodos de ensino).</li>
+<li><strong>Comparação de processos/métodos</strong>: verificar se máquinas, fornecedores ou protocolos diferentes produzem, em média, o mesmo resultado.</li>
+<li><strong>Pesquisas com grupos balanceados</strong>: quando os grupos têm tamanhos amostrais semelhantes e foram coletados sob condições parecidas, é razoável esperar variâncias próximas.</li>
+<li>Em todos esses casos, a ANOVA funciona bem <strong>enquanto a suposição de homogeneidade de variâncias for plausível</strong>.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="suposições-principais" class="slide level2">
+<h2>Suposições principais</h2>
+<div class="box-greypeq">
+<ul>
+<li><strong>Independência</strong>: as observações são independentes entre si. <span class="math display">\[X_1,X_2,...,X_n \text{ são independentes}\]</span></li>
+<li><strong>Normalidade</strong>: as amostras são de populações com distribuição aproximadamente normal. <span class="math display">\[X_{ij} \sim N(\mu_i,\sigma^2)\]</span></li>
+<li><strong>Homogeneidade</strong>: os grupos possuem variâncias populacionais iguais. <span class="math display">\[\sigma^2_1 = \sigma^2_2 = ... = \sigma^2_k\]</span></li>
+</ul>
+</div>
+</section>
+<section id="estatística-de-teste" class="slide level2">
+<h2>Estatística de teste</h2>
+<div class="box-grey">
+<p><span class="math display">\[\boxed{F=\frac{QM_{entre}}{QM_{dentro}}}\]</span></p>
+<p>onde:</p>
+<p><span class="math display">\[QM_{entre}=\frac{SQ_{entre}}{k-1} \quad ; \quad QM_{dentro}=\frac{SQ_{dentro}}{n-k}\]</span></p>
+<p>em que:</p>
+<ul>
+<li><span class="math inline">\(k\)</span> = número de grupos;</li>
+<li><span class="math inline">\(n\)</span> = número total de observações;</li>
+<li><span class="math inline">\(SQ_{\text{entre}}\)</span> = soma dos quadrados entre os grupos;</li>
+<li><span class="math inline">\(SQ_{\text{dentro}}\)</span> = soma dos quadrados dentro dos grupos.</li>
+</ul>
+<p><strong>Interpretação</strong>: valores grandes de <span class="math inline">\(F\)</span> indicam maior variabilidade entre os grupos, fornecendo evidência contra <span class="math inline">\(H_0\)</span>.</p>
+</div>
+</section>
+<section id="onde-a-suposição-da-homogeneidade-é-utilizada" class="slide level2">
+<h2>Onde a suposição da homogeneidade é utilizada</h2>
+<div class="box-grey">
+<div class="box-espaco">
+<ul>
+<li><strong>O</strong> <span class="math inline">\(QM_{dentro}\)</span> combina as variâncias dos grupos.
+<ul>
+<li>É uma média ponderada, que só faz sentido se todas refletem o mesmo <span class="math inline">\(\sigma^2\)</span>.</li>
+</ul></li>
+<li><strong>Sustenta a distribuição</strong> <span class="math inline">\(F\)</span>.
+<ul>
+<li>O <span class="math inline">\(QM_{dentro}\)</span> é o denominador de <span class="math inline">\(F\)</span>. Com um <span class="math inline">\(\sigma^2\)</span> comum, o <span class="math inline">\(F\)</span> segue sua distribuição teórica.</li>
+</ul></li>
+<li><strong>O Tukey também usa o</strong> <span class="math inline">\(QM_{dentro}\)</span>.
+<ul>
+<li>As comparações múltiplas herdam a mesma suposição.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="o-problema-da-heterogeneidade-de-variâncias" class="slide level2">
+<h2>O problema da heterogeneidade de variâncias</h2>
+<div class="box-grey">
+<div class="box-espaco">
+<ul>
+<li><strong>O</strong> <span class="math inline">\(QM_{dentro}\)</span> deixa de ser confiável.
+<ul>
+<li>Ele mistura variâncias diferentes em um único valor.</li>
+</ul></li>
+<li><span class="math inline">\(F\)</span> perde a distribuição teórica.
+<ul>
+<li>O <span class="math inline">\(p\text{-valor}\)</span> fica impreciso.</li>
+</ul></li>
+<li><strong>Erro tipo I distorcido.</strong>
+<ul>
+<li>Falsos positivos ou perda de poder.</li>
+</ul></li>
+<li><strong>Quando isso acontece na prática?</strong>
+<ul>
+<li>Grupos com <strong>tamanhos amostrais muito diferentes</strong>.</li>
+<li>Variáveis como renda, tempo ou contagens, em que a variância tende a crescer junto com a média.</li>
+<li>Grupos coletados em condições distintas (ex.: hospitais, turmas, regiões diferentes).</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="teste-de-tukey" class="slide level2">
+<h2><strong>Teste de Tukey</strong></h2>
+<div class="box-grey">
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Objetivo</a></li><li><a href="#tabset-1-2">Amostras iguais</a></li><li><a href="#tabset-1-3">Amostras diferentes</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="box-espaco">
+<ul>
+<li><p>A <span class="math inline">\(ANOVA\)</span> indica que há diferença, mas não onde.</p></li>
+<li><p>O <span class="math inline">\(\text{Teste de Tukey}\)</span> compara todos os pares de médias, identificando quais dos grupos diferem.</p></li>
+<li><p>Depende do <span class="math inline">\(QM_{dentro}\)</span>.</p>
+<ul>
+<li>Pressupõe homogeneidade de variâncias.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li>Para amostras iguais, a fórmula é a seguinte:</li>
+</ul>
+<p><span class="math display">\[HSD = q_{\alpha,k,N-k}\sqrt{\frac{QM_{dentro}}{n}}\]</span></p>
+<ul>
+<li><strong>A comparação é feita da seguinte forma:</strong></li>
+</ul>
+<p><span class="math display">\[|\bar{X}_i - \bar{X}_j| &gt; HSD\]</span></p>
+<ul>
+<li>Se essa desigualdade for satisfeita, as médias dos grupos <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span> diferem significativamente.</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<ul>
+<li>Onde:
+<ul>
+<li><span class="math inline">\(HSD=\)</span> Diferença Honestamente Significativa.</li>
+<li><span class="math inline">\(q_{\alpha,k,N-k}=\)</span> valor crítico da distribuição do alcance studentizado;</li>
+<li><span class="math inline">\(QM_{dentro}=\)</span> quadrado médio dentro dos grupos;</li>
+<li><span class="math inline">\(n=\)</span> tamanho dos grupos.</li>
+</ul></li>
+</ul>
+</div></div>
+</div>
+<div id="tabset-1-3">
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li>Para amostras diferentes, a fórmula é a seguinte:</li>
+</ul>
+<p><span class="math display">\[HSD_{ij}=q_{\alpha,k,N-k}\sqrt{\frac{QM_{dentro}}{2}\left(\frac{1}{n_i}+\frac{1}{n_j}\right)}\]</span></p>
+<ul>
+<li><strong>A comparação é feita da seguinte forma:</strong></li>
+</ul>
+<p><span class="math display">\[|\bar{X}_i - \bar{X}_j| &gt; HSD_{ij}\]</span></p>
+<ul>
+<li>Se essa desigualdade for satisfeita, as médias dos grupos <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span> diferem significativamente.</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<ul>
+<li>Onde:
+<ul>
+<li><span class="math inline">\(HSD_{ij}=\)</span> Diferença Honestamente Significativa dos grupos <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span>;</li>
+<li><span class="math inline">\(n_i=\)</span> Tamanho do grupo <span class="math inline">\(i\)</span>;</li>
+<li><span class="math inline">\(n_j=\)</span> Tamanho do grupo <span class="math inline">\(j\)</span>.</li>
+</ul></li>
+</ul>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="a-anova-de-welch" class="title-slide slide level1 center">
+<h1>A ANOVA de Welch</h1>
+
+</section>
+<section id="anova-clássica-x-anova-de-welch" class="slide level2">
+<h2>ANOVA clássica x ANOVA de Welch</h2>
+<div class="box-grey">
+<div class="box-espaco">
+<ul>
+<li><strong>ANOVA clássica</strong>: assume variâncias iguais; usa um único <span class="math inline">\(QM_{dentro}\)</span> (pooled) para todos os grupos; <span class="math inline">\(df=n-k\)</span> (inteiro).</li>
+<li><strong>ANOVA de Welch</strong>: não assume variâncias iguais; cada grupo entra com a sua própria <span class="math inline">\(s_i^2\)</span>, ponderada por <span class="math inline">\(w_i=n_i/s_i^2\)</span>; <span class="math inline">\(df_2\)</span> é corrigido (Satterthwaite) e geralmente <strong>fracionário</strong>.</li>
+<li><strong>Quando os grupos têm variâncias parecidas</strong>, os dois testes dão resultados muito próximos — por isso a Welch pode ser usada <strong>como padrão</strong>, sem custo relevante.</li>
+<li><strong>Uso prático</strong>: comparar grupos naturalmente heterogêneos (ex.: renda por região, tempo de internação por hospital, notas entre turmas com perfis diferentes), especialmente quando os tamanhos amostrais também são diferentes.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="o-que-muda-em-relação-à-anova-clássica" class="slide level2">
+<h2>O que muda em relação à ANOVA clássica?</h2>
+<div class="box-grey">
+<div class="box-espaco">
+<ul>
+<li><strong>Não existe mais um único</strong> <span class="math inline">\(QM_{dentro}\)</span> pooled (agrupado).
+<ul>
+<li>Cada grupo entra com a sua própria variância amostral <span class="math inline">\(s_i^2\)</span>, em vez de todas serem misturadas em uma média ponderada única.</li>
+</ul></li>
+<li><strong>Cada grupo recebe um peso.</strong>
+<ul>
+<li>Grupos com variância menor (mais precisos) pesam mais na comparação das médias do que grupos com variância maior.</li>
+</ul></li>
+<li><strong>Os graus de liberdade deixam de ser</strong> <span class="math inline">\(n-k\)</span>.
+<ul>
+<li>Passam a ser corrigidos (aproximação de Satterthwaite), geralmente resultando em um valor <strong>não inteiro</strong> e menor que o da ANOVA clássica.</li>
+</ul></li>
+<li><strong>A ideia estatística:</strong> ajustar o teste para que ele “penalize” a incerteza extra trazida pela heterogeneidade, em vez de ignorá-la.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="pesos-e-média-ponderada" class="slide level2">
+<h2>Pesos e média ponderada</h2>
+<div class="box-grey">
+<p>Cada grupo <span class="math inline">\(i\)</span> recebe um peso inversamente proporcional à sua própria variância:</p>
+<p><span class="math display">\[\boxed{w_i=\frac{n_i}{s_i^2}}\]</span></p>
+<p>A média ponderada de Welch (usada no lugar da média geral simples) é:</p>
+<p><span class="math display">\[\bar{X}_w=\frac{\sum_{i=1}^{k}w_i\bar{X}_i}{\sum_{i=1}^{k}w_i}\]</span></p>
+<p>em que:</p>
+<ul>
+<li><span class="math inline">\(n_i\)</span> = tamanho do grupo <span class="math inline">\(i\)</span>;</li>
+<li><span class="math inline">\(s_i^2\)</span> = variância amostral do grupo <span class="math inline">\(i\)</span>;</li>
+<li><span class="math inline">\(\bar{X}_i\)</span> = média do grupo <span class="math inline">\(i\)</span>.</li>
+</ul>
+<p><strong>Interpretação</strong>: grupos mais “confiáveis” (menor variância) recebem peso maior tanto no cálculo da média de referência quanto na estatística de teste.</p>
+</div>
+</section>
+<section id="estatística-de-teste-de-welch" class="slide level2">
+<h2>Estatística de teste de Welch</h2>
+<div class="box-grey">
+<p><span class="math display">\[\boxed{F_{W}=\dfrac{\dfrac{\sum_{i=1}^{k}w_i(\bar{X}_i-\bar{X}_w)^2}{k-1}}{1+\dfrac{2(k-2)}{k^2-1}\displaystyle\sum_{i=1}^{k}\dfrac{\left(1-\frac{w_i}{\sum_j w_j}\right)^2}{n_i-1}}}\]</span></p>
+<p>em que:</p>
+<ul>
+<li><span class="math inline">\(k\)</span> = número de grupos;</li>
+<li><span class="math inline">\(w_i\)</span> = peso do grupo <span class="math inline">\(i\)</span>;</li>
+<li><span class="math inline">\(\bar{X}_w\)</span> = média ponderada de Welch.</li>
+</ul>
+<p><strong>Interpretação</strong>: o numerador é semelhante ao <span class="math inline">\(QM_{entre}\)</span> da ANOVA clássica (agora ponderado), mas o denominador deixa de ser <span class="math inline">\(1\)</span> e passa a conter um termo de correção que cresce quando os pesos <span class="math inline">\(w_i\)</span> são muito desiguais entre os grupos — ou seja, quando a heterogeneidade de variâncias é maior.</p>
+</div>
+</section>
+<section id="graus-de-liberdade-de-welch" class="slide level2">
+<h2>Graus de liberdade de Welch</h2>
+<div class="box-grey">
+<div class="box-espaco">
+<ul>
+<li><p><strong>Numerador</strong>: continua o mesmo da ANOVA clássica. <span class="math display">\[df_1=k-1\]</span></p></li>
+<li><p><strong>Denominador</strong>: aproximado pela fórmula de Satterthwaite, usando os mesmos termos do denominador de <span class="math inline">\(F_W\)</span>. <span class="math display">\[df_2=\dfrac{k^2-1}{3\displaystyle\sum_{i=1}^{k}\dfrac{\left(1-\frac{w_i}{\sum_j w_j}\right)^2}{n_i-1}}\]</span></p></li>
+<li><p><span class="math inline">\(F_W\)</span> é então comparado a uma distribuição <span class="math inline">\(F\)</span> com <span class="math inline">\((df_1, df_2)\)</span> graus de liberdade.</p></li>
+<li><p><strong>Ponto-chave</strong>: <span class="math inline">\(df_2\)</span> costuma ser <strong>fracionário</strong> e menor do que <span class="math inline">\(n-k\)</span>, refletindo a incerteza extra trazida pela heterogeneidade das variâncias.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="uso-prático-da-anova-de-welch" class="slide level2">
+<h2>Uso prático da ANOVA de Welch</h2>
+<div class="box-grey">
+<div class="box-espaco">
+<ul>
+<li>Recomendada quando o teste de Levene/Bartlett indica <strong>variâncias significativamente diferentes</strong> entre os grupos.</li>
+<li>Especialmente importante quando, além da heterogeneidade, os <strong>tamanhos amostrais também são desbalanceados</strong> — cenário em que a ANOVA clássica mais falha.</li>
+<li>Perde muito pouco poder estatístico quando as variâncias são, na verdade, iguais — por isso muitos pacotes estatísticos já a recomendam <strong>como escolha padrão</strong>.</li>
+<li>Exemplos: comparar tempos de resposta a um tratamento entre hospitais de portes diferentes; comparar salários entre setores com dispersões distintas.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="teste-de-games-howell" class="slide level2">
+<h2><strong>Teste de Games-Howell</strong></h2>
+<div class="box-grey">
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Objetivo</a></li><li><a href="#tabset-2-2">Estatística e graus de liberdade</a></li><li><a href="#tabset-2-3">Critério de decisão</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<div class="box-espaco">
+<ul>
+<li><p>Assim como o Tukey, o <span class="math inline">\(\text{Games-Howell}\)</span> é um teste de comparações múltiplas: compara todos os pares de médias após um resultado significativo na ANOVA.</p></li>
+<li><p>A diferença é que ele <strong>não depende do</strong> <span class="math inline">\(QM_{dentro}\)</span> pooled.</p>
+<ul>
+<li>Cada par de grupos <span class="math inline">\((i,j)\)</span> usa apenas as variâncias e tamanhos amostrais desse par.</li>
+</ul></li>
+<li><p>Por isso é o pós-teste recomendado quando a ANOVA de Welch (em vez da clássica) foi utilizada.</p></li>
+</ul>
+</div>
+</div>
+<div id="tabset-2-2">
+<div class="columns">
+<div class="column" style="width:58%;">
+<ul>
+<li>Para cada par de grupos <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span>, a estatística é análoga a um teste <span class="math inline">\(t\)</span> de Welch:</li>
+</ul>
+<p><span class="math display">\[t_{ij}=\dfrac{\bar{X}_i-\bar{X}_j}{\sqrt{\dfrac{s_i^2}{n_i}+\dfrac{s_j^2}{n_j}}}\]</span></p>
+<ul>
+<li>Os graus de liberdade <strong>também são calculados par a par</strong>, pela aproximação de Welch-Satterthwaite:</li>
+</ul>
+<p><span class="math display">\[\nu_{ij}=\dfrac{\left(\dfrac{s_i^2}{n_i}+\dfrac{s_j^2}{n_j}\right)^2}{\dfrac{(s_i^2/n_i)^2}{n_i-1}+\dfrac{(s_j^2/n_j)^2}{n_j-1}}\]</span></p>
+</div><div class="column" style="width:42%;">
+<ul>
+<li>Onde:
+<ul>
+<li><span class="math inline">\(s_i^2, s_j^2=\)</span> variâncias amostrais dos grupos <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span>;</li>
+<li><span class="math inline">\(n_i, n_j=\)</span> tamanhos dos grupos <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span>.</li>
+</ul></li>
+<li><strong>Diferente do Tukey</strong>, aqui não existe um único <span class="math inline">\(QM_{dentro}\)</span> nem um único <span class="math inline">\(N-k\)</span>: cada comparação tem sua própria “régua” de variabilidade e seu próprio grau de liberdade.</li>
+</ul>
+</div></div>
+</div>
+<div id="tabset-2-3">
+<div class="columns">
+<div class="column" style="width:54%;">
+<ul>
+<li>O valor crítico usa a mesma distribuição do alcance studentizado do Tukey, mas dividido por <span class="math inline">\(\sqrt{2}\)</span> e usando <span class="math inline">\(\nu_{ij}\)</span> no lugar de <span class="math inline">\(N-k\)</span>:</li>
+</ul>
+<p><span class="math display">\[q^{*}_{ij}=\frac{q_{\alpha,k,\nu_{ij}}}{\sqrt{2}}\]</span></p>
+<ul>
+<li><strong>A comparação é feita da seguinte forma:</strong></li>
+</ul>
+<p><span class="math display">\[|\bar{X}_i-\bar{X}_j| &gt; q^{*}_{ij}\sqrt{\frac{s_i^2}{n_i}+\frac{s_j^2}{n_j}}\]</span></p>
+<ul>
+<li>Se essa desigualdade for satisfeita, as médias dos grupos <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span> diferem significativamente.</li>
+</ul>
+</div><div class="column" style="width:46%;">
+<ul>
+<li><strong>Lógica estatística</strong>: assim como a ANOVA de Welch troca a variância pooled por variâncias e graus de liberdade específicos de cada grupo, o Games-Howell faz o mesmo com o Tukey — troca o <span class="math inline">\(QM_{dentro}\)</span> e o <span class="math inline">\(N-k\)</span> únicos por uma estimativa própria de erro-padrão e de graus de liberdade <strong>para cada par de grupos</strong>, evitando que grupos com variância pequena “peguem carona” na variabilidade inflada de grupos com variância grande.</li>
+</ul>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="tukey-x-games-howell-quando-usar-cada-um" class="slide level2">
+<h2>Tukey x Games-Howell: quando usar cada um</h2>
+<div class="box-grey">
+<div class="box-espaco">
+<ul>
+<li><strong>Tukey</strong>: variâncias homogêneas (ou aproximadamente) e, idealmente, grupos balanceados; usa um único <span class="math inline">\(QM_{dentro}\)</span> e um único <span class="math inline">\(N-k\)</span> para todas as comparações.</li>
+<li><strong>Games-Howell</strong>: variâncias heterogêneas e/ou grupos desbalanceados; cada par <span class="math inline">\((i,j)\)</span> tem sua própria variância combinada e seu próprio grau de liberdade.</li>
+<li><strong>Regra prática</strong>: se a ANOVA de Welch foi usada no teste global, o pós-teste coerente é o Games-Howell — assim como o Tukey é o par natural da ANOVA clássica.</li>
+<li><strong>Uso prático</strong>: comparações múltiplas em estudos clínicos, educacionais ou industriais em que alguns grupos são naturalmente mais variáveis ou têm amostras de tamanhos muito diferentes.</li>
+</ul>
+</div>
+</div>
+</section></section>
+<section>
+<section id="referências" class="title-slide slide level1 center">
+<h1>Referências</h1>
+
+</section>
+<section id="referências-1" class="slide level2">
+<h2>Referências</h2>
+<div class="box-greypeq">
+<ul>
+<li>WELCH, B. L. On the comparison of several mean values: an alternative approach. <strong>Biometrika</strong>, v. 38, n.&nbsp;3/4, p.&nbsp;330–336, 1951.</li>
+<li>GAMES, P. A.; HOWELL, J. F. Pairwise multiple comparison procedures with unequal N’s and/or variances: a Monte Carlo study. <strong>Journal of Educational Statistics</strong>, v. 1, n.&nbsp;2, p.&nbsp;113–125, 1976.</li>
+<li>TUKEY, J. W. Comparing individual means in the analysis of variance. <strong>Biometrics</strong>, v. 5, n.&nbsp;2, p.&nbsp;99–114, 1949.</li>
+<li>APRENDER ESTATÍSTICA FÁCIL. <strong>O que é Welch ANOVA</strong>. Disponível em: <a href="https://estatisticafacil.org/glossario/o-que-e-welch-anova/" class="uri">https://estatisticafacil.org/glossario/o-que-e-welch-anova/</a>.</li>
+</ul>
+</div>
+</section>
+<section id="obrigado" class="slide level2 center">
+<h2>Obrigado!</h2>
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="index_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="index_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="index_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="index_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 7.0e-2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

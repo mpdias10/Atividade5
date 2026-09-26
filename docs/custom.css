@@ -1,0 +1,125 @@
+/* Configurações gerais de texto e tipografia */
+.reveal {
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 25px;
+  color: black;
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal h1, .reveal h2, .reveal h3 {
+  color: black;
+  font-weight: 700;
+}
+
+.reveal h2 {
+  font-size: 38px;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid seagreen;
+}
+
+.reveal h3 {
+  font-size: 26px;
+  color: seagreen;
+  margin: 0 0 12px 0;
+}
+
+.reveal p, .reveal li {
+  line-height: 1.35;
+  color: black;
+}
+
+.reveal li {
+  margin-bottom: 10px;
+}
+
+/* Capa centralizada */
+.reveal #title-slide {
+  text-align: center;
+}
+
+.reveal #title-slide .title {
+  font-size: 66px;
+  color: seagreen;
+  margin-bottom: 18px;
+}
+
+.reveal #title-slide .subtitle {
+  font-size: 30px;
+  font-weight: 600;
+  color: black;
+  margin-bottom: 26px;
+}
+
+.reveal #title-slide .quarto-title-authors {
+  justify-content: center;
+  font-size: 26px;
+  color: black;
+}
+
+.reveal #title-slide .date {
+  font-size: 26px;
+  margin-top: 24px;
+}
+
+/* Divisórias de Capítulos */
+.reveal .chapter {
+  border-left: 8px solid seagreen;
+  padding-left: 28px;
+}
+
+.reveal .chapter h1 {
+  font-size: 58px;
+  color: black;
+}
+
+/* Caixas de destaque para fórmulas e explicações */
+.reveal .box-grey {
+  background-color: whitesmoke;
+  border-left: 5px solid seagreen;
+  border-radius: 6px;
+  padding: 16px 22px;
+  margin: 16px 0;
+  color: black;
+}
+
+.reveal .box-greypeq {
+  font-size: 0.9em;
+  background-color: whitesmoke;
+  border-left: 5px solid seagreen;
+  border-radius: 6px;
+  padding: 12px 18px;
+  margin: 12px 0;
+  color: black;
+}
+
+/* Tabelas */
+.reveal table {
+  width: 100%;
+  font-size: 22px;
+  color: black;
+}
+
+.reveal table th {
+  border-bottom: 2px solid seagreen;
+  padding: 10px;
+}
+
+.reveal table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid silver;
+}
+
+/* Slide de encerramento */
+.reveal .agradecimento {
+  text-align: center;
+}
+
+.reveal .agradecimento h2 {
+  font-size: 78px;
+  border: none;
+  margin-bottom: 20px;
+}
