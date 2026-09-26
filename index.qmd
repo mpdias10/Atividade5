@@ -345,4 +345,4 @@ $$|\bar{X}_i-\bar{X}_j| > q^{*}_{ij}\sqrt{\frac{s_i^2}{n_i}+\frac{s_j^2}{n_j}}$$
 - APRENDER ESTATÍSTICA FÁCIL. **O que é Welch ANOVA**. Disponível em: <https://estatisticafacil.org/glossario/o-que-e-welch-anova/>.
 :::
 
-## Obrigado! {.center}
+## Obrigado!! {.center}
