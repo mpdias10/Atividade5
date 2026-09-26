@@ -1,7 +1,7 @@
 ---
 title: "**PRÁTICA ESTATÍSTICA II**"
 subtitle: "**ATIVIDADE AVALIATIVA 5**"
-author: "Alexandre Villela Roque (<alexandreroque@id.uff.br>) <br> Davi Lucas (daviij@id.uff.br) <br> Marcos Paulo (<mp_dias@id.uff.br>)"
+author: "Alexandre Villela Roque (<alexandreroque@id.uff.br>) <br> Davi Lucas (davij@id.uff.br) <br> Marcos Paulo (<mp_dias@id.uff.br>)"
 date: today
 date-format: "DD/MM/YYYY"
 institute: "Universidade Federal Fluminense"
