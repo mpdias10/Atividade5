@@ -1,13 +1,13 @@
 ---
 title: "**PRÁTICA ESTATÍSTICA II**"
 subtitle: "**ATIVIDADE AVALIATIVA 5**"
-author: "Alexandre Villela Roque (<alexandreroque@id.uff.br>) <br> Davi Lucas (davij@id.uff.br) <br> Marcos Paulo (<mp_dias@id.uff.br>)"
+author: "Alexandre Villela Roque (<alexandreroque@id.uff.br>) <br> Davi Lucas (daviij@id.uff.br) <br> Marcos Paulo (<mp_dias@id.uff.br>)"
 date: today
 date-format: "DD/MM/YYYY"
 institute: "Universidade Federal Fluminense"
 format:
   revealjs:
-    css: custom.css
+    css: davi.css
     slide-number: true
     incremental: false
     transition: slide
@@ -182,7 +182,7 @@ $$|\bar{X}_i - \bar{X}_j| > HSD_{ij}$$
 
 :::: box-grey
 ::: box-espaco
-- **ANOVA clássica**: assume variâncias iguais; usa um único $QM_{dentro}$ (pooled) para todos os grupos; $df=n-k$ (inteiro).
+- **ANOVA clássica**: assume variâncias iguais; usa um único $QM_{dentro}$ (agrupado) para todos os grupos; $df=n-k$ (inteiro).
 - **ANOVA de Welch**: não assume variâncias iguais; cada grupo entra com a sua própria $s_i^2$, ponderada por $w_i=n_i/s_i^2$; $df_2$ é corrigido (Satterthwaite) e geralmente **fracionário**.
 - **Quando os grupos têm variâncias parecidas**, os dois testes dão resultados muito próximos — por isso a Welch pode ser usada **como padrão**, sem custo relevante.
 - **Uso prático**: comparar grupos naturalmente heterogêneos (ex.: renda por região, tempo de internação por hospital, notas entre turmas com perfis diferentes), especialmente quando os tamanhos amostrais também são diferentes.
@@ -193,7 +193,7 @@ $$|\bar{X}_i - \bar{X}_j| > HSD_{ij}$$
 
 :::: box-grey
 ::: box-espaco
-- **Não existe mais um único** $QM_{dentro}$ pooled (agrupado).
+- **Não existe mais um único** $QM_{dentro}$ agrupado (pooled).
   - Cada grupo entra com a sua própria variância amostral $s_i^2$, em vez de todas serem misturadas em uma média ponderada única.
 - **Cada grupo recebe um peso.**
   - Grupos com variância menor (mais precisos) pesam mais na comparação das médias do que grupos com variância maior.
@@ -272,7 +272,7 @@ em que:
 ::: box-espaco
 - Assim como o Tukey, o $\text{Games-Howell}$ é um teste de comparações múltiplas: compara todos os pares de médias após um resultado significativo na ANOVA.
 
-- A diferença é que ele **não depende do** $QM_{dentro}$ pooled.
+- A diferença é que ele **não depende do** $QM_{dentro}$ agrupado
   - Cada par de grupos $(i,j)$ usa apenas as variâncias e tamanhos amostrais desse par.
 
 - Por isso é o pós-teste recomendado quando a ANOVA de Welch (em vez da clássica) foi utilizada.
