@@ -1,12 +1,11 @@
-/* Configurações gerais de texto e tipografia */
 .reveal {
   font-family: "Segoe UI", Arial, sans-serif;
-  font-size: 25px;
   color: black;
 }
 
 .reveal .slides {
   text-align: left;
+  font-size: 0.88em;
 }
 
 .reveal h1, .reveal h2, .reveal h3 {
@@ -15,111 +14,112 @@
 }
 
 .reveal h2 {
-  font-size: 38px;
-  margin-bottom: 20px;
-  padding-bottom: 8px;
+  font-size: 1.25em;
+  margin-top: 0;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
   border-bottom: 3px solid seagreen;
 }
 
-.reveal h3 {
-  font-size: 26px;
-  color: seagreen;
-  margin: 0 0 12px 0;
+.reveal p {
+  margin: 4px 0;
+  line-height: 1.3;
 }
 
-.reveal p, .reveal li {
-  line-height: 1.35;
-  color: black;
-}
-
-.reveal li {
-  margin-bottom: 10px;
-}
-
-/* Capa centralizada */
 .reveal #title-slide {
   text-align: center;
 }
 
 .reveal #title-slide .title {
-  font-size: 66px;
   color: seagreen;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .reveal #title-slide .subtitle {
-  font-size: 30px;
-  font-weight: 600;
   color: black;
-  margin-bottom: 26px;
+  margin-bottom: 20px;
 }
 
-.reveal #title-slide .quarto-title-authors {
-  justify-content: center;
-  font-size: 26px;
-  color: black;
-}
-
-.reveal #title-slide .date {
-  font-size: 26px;
-  margin-top: 24px;
-}
-
-/* Divisórias de Capítulos */
-.reveal .chapter {
-  border-left: 8px solid seagreen;
-  padding-left: 28px;
-}
-
-.reveal .chapter h1 {
-  font-size: 58px;
-  color: black;
-}
-
-/* Caixas de destaque para fórmulas e explicações */
-.reveal .box-grey {
+.box-grey {
   background-color: whitesmoke;
-  border-left: 5px solid seagreen;
-  border-radius: 6px;
-  padding: 16px 22px;
-  margin: 16px 0;
+  border-left: 6px solid seagreen;
+  padding: 10px 16px;
+  border-radius: 8px;
+  margin: 6px 0;
   color: black;
+  font-size: 0.92em; 
 }
 
-.reveal .box-greypeq {
-  font-size: 0.9em;
+.box-greypeq {
+  font-size: 0.82em;
   background-color: whitesmoke;
-  border-left: 5px solid seagreen;
-  border-radius: 6px;
-  padding: 12px 18px;
-  margin: 12px 0;
+  border-left: 6px solid seagreen;
+  padding: 8px 14px;
+  border-radius: 8px;
+  margin: 6px 0;
   color: black;
 }
 
-/* Tabelas */
+.box-espaco > ul > li,
+.box-maisespaco > ul > li {
+  margin-bottom: 8px !important;
+  line-height: 1.3;
+}
+
+.reveal ul {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.reveal li {
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.reveal .math.display,
+.panel-tabset .math.display {
+  margin: 4px 0 !important;
+}
+
+.panel-tabset .nav-tabs {
+  margin-bottom: 10px !important;
+  border-bottom: 1px solid silver !important;
+}
+
+.panel-tabset .nav-tabs .nav-link,
+.panel-tabset .nav-link,
+.panel-tabset a {
+  color: black !important;
+  font-size: 0.95em;
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.panel-tabset .nav-tabs .nav-link:hover,
+.panel-tabset .nav-link:hover {
+  color: seagreen !important;
+}
+
+.panel-tabset .nav-tabs .nav-link.active,
+.panel-tabset .nav-link.active,
+.panel-tabset a.active {
+  color: seagreen !important;
+  font-weight: bold !important;
+  border-bottom: 3px solid seagreen !important;
+  background-color: transparent !important;
+}
+
 .reveal table {
   width: 100%;
-  font-size: 22px;
   color: black;
 }
 
 .reveal table th {
   border-bottom: 2px solid seagreen;
-  padding: 10px;
+  padding: 8px;
 }
 
 .reveal table td {
-  padding: 10px 8px;
+  padding: 8px;
   border-bottom: 1px solid silver;
-}
-
-/* Slide de encerramento */
-.reveal .agradecimento {
-  text-align: center;
-}
-
-.reveal .agradecimento h2 {
-  font-size: 78px;
-  border: none;
-  margin-bottom: 20px;
 }

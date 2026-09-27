@@ -9,7 +9,7 @@
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
-  <meta name="author" content="Alexandre Villela Roque (alexandreroque@id.uff.br)   Davi Lucas (daviij@id.uff.br)   Marcos Paulo (mp_dias@id.uff.br)">
+  <meta name="author" content="Alexandre Villela Roque (alexandreroque@id.uff.br)   Davi Lucas (davij@id.uff.br)   Marcos Paulo Dias (mp_dias@id.uff.br)">
   <title>PRÁTICA ESTATÍSTICA II</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -137,7 +137,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Alexandre Villela Roque (<a href="mailto:alexandreroque@id.uff.br" class="email">alexandreroque@id.uff.br</a>) <br> Davi Lucas (daviij@id.uff.br) <br> Marcos Paulo (<a href="mailto:mp_dias@id.uff.br" class="email">mp_dias@id.uff.br</a>) 
+Alexandre Villela Roque (<a href="mailto:alexandreroque@id.uff.br" class="email">alexandreroque@id.uff.br</a>) <br> Davi Lucas (<a href="mailto:davij@id.uff.br" class="email">davij@id.uff.br</a>) <br> Marcos Paulo Dias (<a href="mailto:mp_dias@id.uff.br" class="email">mp_dias@id.uff.br</a>) 
 </div>
         <p class="quarto-title-affiliation">
             Universidade Federal Fluminense
@@ -145,7 +145,7 @@ Alexandre Villela Roque (<a href="mailto:alexandreroque@id.uff.br" class="email"
     </div>
 </div>
 
-  <p class="date">26/09/2026</p>
+  <p class="date">27/09/2026</p>
 </section>
 <section>
 <section id="contexto" class="title-slide slide level1 center">
@@ -168,7 +168,7 @@ H_1 &amp;: \text{pelo menos uma das médias é diferente.}
 <li>A ideia é comparar a variabilidade entre os grupos com a variabilidade dentro dos grupos.</li>
 </ul>
 </section>
-<section id="onde-a-anova-clássica-é-utilizada-na-prática" class="slide level2">
+<section id="onde-a-anova-clássica-é-utilizada-na-prática" class="slide level2 smaller">
 <h2>Onde a ANOVA clássica é utilizada na prática</h2>
 <div class="box-grey">
 <div class="box-espaco">
@@ -191,7 +191,7 @@ H_1 &amp;: \text{pelo menos uma das médias é diferente.}
 </ul>
 </div>
 </section>
-<section id="estatística-de-teste" class="slide level2">
+<section id="estatística-de-teste" class="slide level2 smaller">
 <h2>Estatística de teste</h2>
 <div class="box-grey">
 <p><span class="math display">\[\boxed{F=\frac{QM_{entre}}{QM_{dentro}}}\]</span></p>
@@ -338,10 +338,10 @@ H_1 &amp;: \text{pelo menos uma das médias é diferente.}
 <div class="box-grey">
 <div class="box-espaco">
 <ul>
-<li><strong>ANOVA clássica</strong>: assume variâncias iguais; usa um único <span class="math inline">\(QM_{dentro}\)</span> (pooled) para todos os grupos; <span class="math inline">\(df=n-k\)</span> (inteiro).</li>
-<li><strong>ANOVA de Welch</strong>: não assume variâncias iguais; cada grupo entra com a sua própria <span class="math inline">\(s_i^2\)</span>, ponderada por <span class="math inline">\(w_i=n_i/s_i^2\)</span>; <span class="math inline">\(df_2\)</span> é corrigido (Satterthwaite) e geralmente <strong>fracionário</strong>.</li>
-<li><strong>Quando os grupos têm variâncias parecidas</strong>, os dois testes dão resultados muito próximos — por isso a Welch pode ser usada <strong>como padrão</strong>, sem custo relevante.</li>
-<li><strong>Uso prático</strong>: comparar grupos naturalmente heterogêneos (ex.: renda por região, tempo de internação por hospital, notas entre turmas com perfis diferentes), especialmente quando os tamanhos amostrais também são diferentes.</li>
+<li><p><strong>ANOVA clássica:</strong> pressupõe que as variâncias dos grupos sejam iguais.</p></li>
+<li><p><strong>ANOVA de Welch:</strong> não exige que as variâncias sejam iguais.</p></li>
+<li><p>O objetivo dos dois testes é o mesmo: verificar se as médias dos grupos são iguais.</p></li>
+<li><p>A principal diferença está na forma como a variabilidade dos grupos é considerada no cálculo do teste.</p></li>
 </ul>
 </div>
 </div>
@@ -351,50 +351,42 @@ H_1 &amp;: \text{pelo menos uma das médias é diferente.}
 <div class="box-grey">
 <div class="box-espaco">
 <ul>
-<li><strong>Não existe mais um único</strong> <span class="math inline">\(QM_{dentro}\)</span> pooled (agrupado).
+<li><p>Na ANOVA clássica, as variâncias dos grupos são combinadas em uma única estimativa, o <span class="math inline">\(QM_{dentro}\)</span>.</p></li>
+<li><p>Na Welch, cada grupo utiliza sua própria variância amostral <span class="math inline">\(s_i^2\)</span>.</p></li>
+<li><p>Cada grupo recebe um peso:</p></li>
+</ul>
+<p><span class="math display">\[\boxed{w_i=\frac{n_i}{s_i^2}}\]</span></p>
 <ul>
-<li>Cada grupo entra com a sua própria variância amostral <span class="math inline">\(s_i^2\)</span>, em vez de todas serem misturadas em uma média ponderada única.</li>
-</ul></li>
-<li><strong>Cada grupo recebe um peso.</strong>
-<ul>
-<li>Grupos com variância menor (mais precisos) pesam mais na comparação das médias do que grupos com variância maior.</li>
-</ul></li>
-<li><strong>Os graus de liberdade deixam de ser</strong> <span class="math inline">\(n-k\)</span>.
-<ul>
-<li>Passam a ser corrigidos (aproximação de Satterthwaite), geralmente resultando em um valor <strong>não inteiro</strong> e menor que o da ANOVA clássica.</li>
-</ul></li>
-<li><strong>A ideia estatística:</strong> ajustar o teste para que ele “penalize” a incerteza extra trazida pela heterogeneidade, em vez de ignorá-la.</li>
+<li><p>Assim, grupos com menor variância recebem maior peso na comparação das médias.</p></li>
+<li><p>Os graus de liberdade também são ajustados para considerar a heterogeneidade das variâncias.</p></li>
 </ul>
 </div>
 </div>
 </section>
-<section id="pesos-e-média-ponderada" class="slide level2">
-<h2>Pesos e média ponderada</h2>
+<section id="média-ponderada-de-welch" class="slide level2">
+<h2>Média ponderada de Welch</h2>
 <div class="box-grey">
-<p>Cada grupo <span class="math inline">\(i\)</span> recebe um peso inversamente proporcional à sua própria variância:</p>
-<p><span class="math display">\[\boxed{w_i=\frac{n_i}{s_i^2}}\]</span></p>
-<p>A média ponderada de Welch (usada no lugar da média geral simples) é:</p>
-<p><span class="math display">\[\bar{X}_w=\frac{\sum_{i=1}^{k}w_i\bar{X}_i}{\sum_{i=1}^{k}w_i}\]</span></p>
-<p>em que:</p>
+<p>A média utilizada como referência é uma média ponderada:</p>
+<p><span class="math display">\[\boxed{\bar{X}_w=\frac{\sum_{i=1}^{k}w_i\bar{X}_i}{\sum_{i=1}^{k}w_i}}\]</span></p>
+<p>onde:</p>
 <ul>
-<li><span class="math inline">\(n_i\)</span> = tamanho do grupo <span class="math inline">\(i\)</span>;</li>
-<li><span class="math inline">\(s_i^2\)</span> = variância amostral do grupo <span class="math inline">\(i\)</span>;</li>
-<li><span class="math inline">\(\bar{X}_i\)</span> = média do grupo <span class="math inline">\(i\)</span>.</li>
+<li><span class="math inline">\(w_i=\frac{n_i}{s_i^2}\)</span> é o peso do grupo <span class="math inline">\(i\)</span>;</li>
+<li><span class="math inline">\(n_i\)</span> é o tamanho do grupo;</li>
+<li><span class="math inline">\(s_i^2\)</span> é a variância amostral;</li>
+<li><span class="math inline">\(\bar{X}_i\)</span> é a média do grupo.</li>
 </ul>
-<p><strong>Interpretação</strong>: grupos mais “confiáveis” (menor variância) recebem peso maior tanto no cálculo da média de referência quanto na estatística de teste.</p>
+<p><strong>Ideia:</strong> grupos com menor variância têm maior peso na comparação.</p>
 </div>
 </section>
 <section id="estatística-de-teste-de-welch" class="slide level2">
 <h2>Estatística de teste de Welch</h2>
 <div class="box-grey">
-<p><span class="math display">\[\boxed{F_{W}=\dfrac{\dfrac{\sum_{i=1}^{k}w_i(\bar{X}_i-\bar{X}_w)^2}{k-1}}{1+\dfrac{2(k-2)}{k^2-1}\displaystyle\sum_{i=1}^{k}\dfrac{\left(1-\frac{w_i}{\sum_j w_j}\right)^2}{n_i-1}}}\]</span></p>
-<p>em que:</p>
+<p>A estatística de Welch pode ser escrita como:</p>
+<p><span class="math display">\[\boxed{F_W=\frac{\dfrac{1}{k-1}\sum_{i=1}^{k}w_i(\bar{X}_i-\bar{X}_w)^2}{1+\dfrac{2(k-2)}{k^2-1}\sum_{i=1}^{k}\dfrac{\left(1-\frac{w_i}{\sum_j w_j}\right)^2}{n_i-1}}}\]</span></p>
 <ul>
-<li><span class="math inline">\(k\)</span> = número de grupos;</li>
-<li><span class="math inline">\(w_i\)</span> = peso do grupo <span class="math inline">\(i\)</span>;</li>
-<li><span class="math inline">\(\bar{X}_w\)</span> = média ponderada de Welch.</li>
+<li>O numerador mede a diferença entre as médias dos grupos, considerando os pesos.</li>
+<li>O denominador é um <strong>termo de correção</strong> que leva em conta a desigualdade entre as variâncias e os tamanhos dos grupos.</li>
 </ul>
-<p><strong>Interpretação</strong>: o numerador é semelhante ao <span class="math inline">\(QM_{entre}\)</span> da ANOVA clássica (agora ponderado), mas o denominador deixa de ser <span class="math inline">\(1\)</span> e passa a conter um termo de correção que cresce quando os pesos <span class="math inline">\(w_i\)</span> são muito desiguais entre os grupos — ou seja, quando a heterogeneidade de variâncias é maior.</p>
 </div>
 </section>
 <section id="graus-de-liberdade-de-welch" class="slide level2">
@@ -402,10 +394,16 @@ H_1 &amp;: \text{pelo menos uma das médias é diferente.}
 <div class="box-grey">
 <div class="box-espaco">
 <ul>
-<li><p><strong>Numerador</strong>: continua o mesmo da ANOVA clássica. <span class="math display">\[df_1=k-1\]</span></p></li>
-<li><p><strong>Denominador</strong>: aproximado pela fórmula de Satterthwaite, usando os mesmos termos do denominador de <span class="math inline">\(F_W\)</span>. <span class="math display">\[df_2=\dfrac{k^2-1}{3\displaystyle\sum_{i=1}^{k}\dfrac{\left(1-\frac{w_i}{\sum_j w_j}\right)^2}{n_i-1}}\]</span></p></li>
-<li><p><span class="math inline">\(F_W\)</span> é então comparado a uma distribuição <span class="math inline">\(F\)</span> com <span class="math inline">\((df_1, df_2)\)</span> graus de liberdade.</p></li>
-<li><p><strong>Ponto-chave</strong>: <span class="math inline">\(df_2\)</span> costuma ser <strong>fracionário</strong> e menor do que <span class="math inline">\(n-k\)</span>, refletindo a incerteza extra trazida pela heterogeneidade das variâncias.</p></li>
+<li><strong>Numerador:</strong> continua o mesmo da ANOVA clássica.</li>
+</ul>
+<p><span class="math display">\[df_1=k-1\]</span></p>
+<ul>
+<li><strong>Denominador:</strong> é ajustado pela aproximação de Satterthwaite.</li>
+</ul>
+<p><span class="math display">\[df_2=\frac{k^2-1}{3\sum_{i=1}^{k}\frac{\left(1-\frac{w_i}{\sum_j w_j}\right)^2}{n_i-1}}\]</span></p>
+<ul>
+<li><p>Diferentemente da ANOVA clássica, <span class="math inline">\(df_2\)</span> pode ser <strong>fracionário</strong>.</p></li>
+<li><p>Finalmente, <span class="math inline">\(F_W\)</span> é comparado com uma distribuição <span class="math inline">\(F\)</span> com <span class="math inline">\((df_1,df_2)\)</span> graus de liberdade.</p></li>
 </ul>
 </div>
 </div>
@@ -415,10 +413,15 @@ H_1 &amp;: \text{pelo menos uma das médias é diferente.}
 <div class="box-grey">
 <div class="box-espaco">
 <ul>
-<li>Recomendada quando o teste de Levene/Bartlett indica <strong>variâncias significativamente diferentes</strong> entre os grupos.</li>
-<li>Especialmente importante quando, além da heterogeneidade, os <strong>tamanhos amostrais também são desbalanceados</strong> — cenário em que a ANOVA clássica mais falha.</li>
-<li>Perde muito pouco poder estatístico quando as variâncias são, na verdade, iguais — por isso muitos pacotes estatísticos já a recomendam <strong>como escolha padrão</strong>.</li>
-<li>Exemplos: comparar tempos de resposta a um tratamento entre hospitais de portes diferentes; comparar salários entre setores com dispersões distintas.</li>
+<li><p>É indicada quando os grupos apresentam <strong>variâncias diferentes</strong>.</p></li>
+<li><p>É especialmente importante quando, além das variâncias diferentes, os grupos possuem <strong>tamanhos amostrais diferentes</strong>.</p></li>
+<li><p>Exemplos:</p>
+<ul>
+<li>comparar o tempo de internação entre hospitais;</li>
+<li>comparar salários entre diferentes setores;</li>
+<li>comparar notas entre turmas com perfis diferentes.</li>
+</ul></li>
+<li><p>Nesses casos, a ANOVA de Welch é uma alternativa à ANOVA clássica porque <strong>não exige a igualdade das variâncias</strong>.</p></li>
 </ul>
 </div>
 </div>
@@ -433,7 +436,7 @@ H_1 &amp;: \text{pelo menos uma das médias é diferente.}
 <div class="box-espaco">
 <ul>
 <li><p>Assim como o Tukey, o <span class="math inline">\(\text{Games-Howell}\)</span> é um teste de comparações múltiplas: compara todos os pares de médias após um resultado significativo na ANOVA.</p></li>
-<li><p>A diferença é que ele <strong>não depende do</strong> <span class="math inline">\(QM_{dentro}\)</span> pooled.</p>
+<li><p>A diferença é que ele <strong>não depende do</strong> <span class="math inline">\(QM_{dentro}\)</span> agrupado</p>
 <ul>
 <li>Cada par de grupos <span class="math inline">\((i,j)\)</span> usa apenas as variâncias e tamanhos amostrais desse par.</li>
 </ul></li>
@@ -509,15 +512,15 @@ H_1 &amp;: \text{pelo menos uma das médias é diferente.}
 <h2>Referências</h2>
 <div class="box-greypeq">
 <ul>
-<li>WELCH, B. L. On the comparison of several mean values: an alternative approach. <strong>Biometrika</strong>, v. 38, n.&nbsp;3/4, p.&nbsp;330–336, 1951.</li>
-<li>GAMES, P. A.; HOWELL, J. F. Pairwise multiple comparison procedures with unequal N’s and/or variances: a Monte Carlo study. <strong>Journal of Educational Statistics</strong>, v. 1, n.&nbsp;2, p.&nbsp;113–125, 1976.</li>
-<li>TUKEY, J. W. Comparing individual means in the analysis of variance. <strong>Biometrics</strong>, v. 5, n.&nbsp;2, p.&nbsp;99–114, 1949.</li>
+<li>WELCH, B. L. On the comparison of several mean values: an alternative approach. <strong>Biometrika</strong>, 1951.</li>
+<li>GAMES, P. A.; HOWELL, J. F. Pairwise multiple comparison procedures with unequal N’s and/or variances: a Monte Carlo study. <strong>Journal of Educational Statistics</strong>, 1976.</li>
+<li>TUKEY, J. W. Comparing individual means in the analysis of variance. <strong>Biometrics</strong>, 1949.</li>
 <li>APRENDER ESTATÍSTICA FÁCIL. <strong>O que é Welch ANOVA</strong>. Disponível em: <a href="https://estatisticafacil.org/glossario/o-que-e-welch-anova/" class="uri">https://estatisticafacil.org/glossario/o-que-e-welch-anova/</a>.</li>
 </ul>
 </div>
 </section>
 <section id="obrigado" class="slide level2 center">
-<h2>Obrigado!</h2>
+<h2>Obrigado!!</h2>
 
 </section></section>
     </div>
@@ -556,7 +559,7 @@ H_1 &amp;: \text{pelo menos uma das médias é diferente.}
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': false,
+'smaller': true,
  
         // Display controls in the bottom right corner
         controls: false,
