@@ -280,7 +280,6 @@ $$df_2=\frac{k^2-1}{3\sum_{i=1}^{k}\frac{\left(1-\frac{w_i}{\sum_j w_j}\right)^2
 ::::::: box-grey
 :::::: panel-tabset
 ### Objetivo
-- Se a ANOVA de Welch é utilizada porque não podemos assumir variâncias iguais, o pós-teste também deve considerar essa heterogeneidade.
 
 ::: box-espaco
 - Assim como o Tukey, o $\text{Games-Howell}$ é um teste de comparações múltiplas: compara todos os pares de médias após um resultado significativo na ANOVA.
@@ -289,6 +288,8 @@ $$df_2=\frac{k^2-1}{3\sum_{i=1}^{k}\frac{\left(1-\frac{w_i}{\sum_j w_j}\right)^2
   - Cada par de grupos $(i,j)$ usa apenas as variâncias e tamanhos amostrais desse par.
 
 - Por isso é o pós-teste recomendado quando a ANOVA de Welch (em vez da clássica) foi utilizada.
+
+- Se a ANOVA de Welch é utilizada porque não podemos assumir variâncias iguais, o pós-teste também deve considerar essa heterogeneidade.
 :::
 
 ### Estatística e graus de liberdade
