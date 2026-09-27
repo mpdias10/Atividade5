@@ -1,7 +1,7 @@
 ---
 title: "**PRÁTICA ESTATÍSTICA II**"
 subtitle: "**ATIVIDADE AVALIATIVA 5**"
-author: "Alexandre Villela Roque (<alexandreroque@id.uff.br>) <br> Davi Lucas (<davij@id.uff.br>) <br> Marcos Paulo Dias (<mp_dias@id.uff.br>)"
+author: "Alexandre Villela Roque (<alexandreroque@id.uff.br>) <br> Davi Lucas (davij@id.uff.br) <br> Marcos Paulo Dias (<mp_dias@id.uff.br>)"
 date: today
 date-format: "DD/MM/YYYY"
 institute: "Universidade Federal Fluminense"
@@ -39,7 +39,7 @@ H_1 &: \text{pelo menos uma das médias é diferente.}
 
 - A ideia é comparar a variabilidade entre os grupos com a variabilidade dentro dos grupos.
 
-## Onde a ANOVA clássica é utilizada na prática {.smaller}
+## Onde a ANOVA clássica é utilizada na prática
 
 :::: box-grey
 ::: box-espaco
@@ -56,12 +56,12 @@ H_1 &: \text{pelo menos uma das médias é diferente.}
 - **Independência**: as observações são independentes entre si.
   $$X_1,X_2,...,X_n \text{ são independentes}$$
 - **Normalidade**: as amostras são de populações com distribuição aproximadamente normal.
-  $$X_{ij} \sim N(\mu_i,\sigma^2)$$
+  $$X_{ij} \sim N(\mu_i,\sigma_i^2)$$
 - **Homogeneidade**: os grupos possuem variâncias populacionais iguais.
   $$\sigma^2_1 = \sigma^2_2 = ... = \sigma^2_k$$
 :::
 
-## Estatística de teste {.smaller}
+## Estatística de teste
 
 ::: box-grey
 $$\boxed{F=\frac{QM_{entre}}{QM_{dentro}}}$$
@@ -97,10 +97,10 @@ em que:
 
 :::: box-grey
 ::: box-espaco
-- **O** $QM_{dentro}$ deixa de ser confiável.
-  - Ele mistura variâncias diferentes em um único valor.
-- $F$ perde a distribuição teórica.
-  - O $p\text{-valor}$ fica impreciso.
+- **O** $QM_{dentro}$ deixa de representar adequadamente uma variância comum.
+  - Ele combina variâncias diferentes em uma única estimativa.
+- A estatística $F$ deixa de seguir adequadamente a distribuição $F$ assumida pela ANOVA clássica.
+  - O $p\text{-valor}$ pode ficar impreciso.
 - **Erro tipo I distorcido.**
   - Falsos positivos ou perda de poder.
 - **Quando isso acontece na prática?**
@@ -205,7 +205,7 @@ $$|\bar{X}_i - \bar{X}_j| > HSD_{ij}$$
 
 $$\boxed{w_i=\frac{n_i}{s_i^2}}$$
 
-- Assim, grupos com menor variância recebem maior peso na comparação das médias.
+- O peso aumenta quando o grupo possui maior tamanho amostral ou menor variância.
 
 - Os graus de liberdade também são ajustados para considerar a heterogeneidade das variâncias.
 :::
@@ -274,11 +274,13 @@ $$df_2=\frac{k^2-1}{3\sum_{i=1}^{k}\frac{\left(1-\frac{w_i}{\sum_j w_j}\right)^2
 :::
 ::::
 
+
 ## **Teste de Games-Howell**
 
 ::::::: box-grey
 :::::: panel-tabset
 ### Objetivo
+- Se a ANOVA de Welch é utilizada porque não podemos assumir variâncias iguais, o pós-teste também deve considerar essa heterogeneidade.
 
 ::: box-espaco
 - Assim como o Tukey, o $\text{Games-Howell}$ é um teste de comparações múltiplas: compara todos os pares de médias após um resultado significativo na ANOVA.
@@ -339,7 +341,7 @@ $$|\bar{X}_i-\bar{X}_j| > q^{*}_{ij}\sqrt{\frac{s_i^2}{n_i}+\frac{s_j^2}{n_j}}$$
 :::: box-grey
 ::: box-espaco
 - **Tukey**: variâncias homogêneas (ou aproximadamente) e, idealmente, grupos balanceados; usa um único $QM_{dentro}$ e um único $N-k$ para todas as comparações.
-- **Games-Howell**: variâncias heterogêneas e/ou grupos desbalanceados; cada par $(i,j)$ tem sua própria variância combinada e seu próprio grau de liberdade.
+- **Games-Howell**: indicado quando as variâncias são heterogêneas, especialmente quando os tamanhos dos grupos também são diferentes; cada par $(i,j)$ tem sua própria estimativa de variabilidade e seu próprio grau de liberdade.
 - **Regra prática**: se a ANOVA de Welch foi usada no teste global, o pós-teste coerente é o Games-Howell — assim como o Tukey é o par natural da ANOVA clássica.
 - **Uso prático**: comparações múltiplas em estudos clínicos, educacionais ou industriais em que alguns grupos são naturalmente mais variáveis ou têm amostras de tamanhos muito diferentes.
 :::
